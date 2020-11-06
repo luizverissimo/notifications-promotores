@@ -1,11 +1,9 @@
-// Update with your config settings.
-
 module.exports = {
   development: {
     client: "pg",
     connection: {
       database: "promotordb",
-      user: "root",
+      user: "postgres",
       password: "123",
     },
     pool: {
