@@ -11,6 +11,12 @@ exports.sendNotifications = functions.https.onRequest(async (req, res) => {
     const notifications = await connection("notifications")
       .select("*")
       .join("users", "users.i_user", "=", "notifications.i_user")
+      .join(
+        "devices_notifications",
+        "users.i_user",
+        "=",
+        "devices_notifications.i_user"
+      )
       .where({ "notifications.deleted": false, sent: false })
       .where("notifications.sent_date", "<=", now);
 
